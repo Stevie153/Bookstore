@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Haven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-1">
+            <a href="../pages/user.html" class="logo"><i class="fas fa-book "></i>Book Haven</a>
+            <form action="" class="search-form">
+                <input type="search" placeholder="Search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+            <div class="icons">
+                <!-- <div id="search-btn" class="fas fa-search"></div> -->
+                <a href="../pages/favorites.html" class="fas fa-heart"></a>
+                <a href="../pages/cart.html" class="fas fa-shopping-cart"></a>
+                <!-- <div id="login-btn" class="fas fa-user"></div> -->
+                <span id="user-name-display" class="user-name"></span> 
+                <button id="logout-btn" class="logout-btn">Logout</button>              
+                
+            </div>
+        </div>
+        <div class="header-2">
+            <nav class="navbar">
+                <a href="../pages/user.html">Home</a>
+                <a href="#featured">Featured</a>
+                <a href="#arrivals">Arrivals</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+      
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <div class="slider">
+                <div class="slides">
+                    <div class="slide"><img src="https://dispatch.barnesandnoble.com/content/dam/ccr/homepage/daily/2024/11/08/30980_BB_1_HolidayGiftGuide_11_08_24r3-tablet.jpg" alt="Image 1"></div>
+                    <div class="slide"><img src="/Assets/images/naruto-uzumaki-orange-art-desktop-wallpaper.jpg" alt="Image 2"></div>
+                    <div class="slide"><img src="/Assets/images/wallhaven-l8owvp_3840x1600.png" alt="Image 3"></div>
+                </div>
+                <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                <a class="next" onclick="changeSlide(1)">&#10095;</a>
+            </div>
+            <h1>Welcome to Book Haven</h1>
+            <p>Your one-stop destination for all things literary.</p>
+            <a href="#featured" class="btn">Explore Featured Books</a>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section id="featured" class="featured-section">
+        <h2 class="section-title">Featured Books</h2>
+        <div id="featuredcontainer" class="featured-container">
+            
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section id="arrivals" class="new-arrivals">
+        <h2 class="section-title">New Arrivals</h2>
+        <div id="arrivalscontainer" class="arrivals-container">
+            <!-- <div class="book-card">
+                <img src="book4.jpg" alt="Book 4">
+                <h3>Book Title 4</h3>
+                <p>A brief description of Book 4.</p>
+            </div>
+            <div class="book-card">
+                <img src="book5.jpg" alt="Book 5">
+                <h3>Book Title 5</h3>
+                <p>A brief description of Book 5.</p>
+            </div>
+            <div class="book-card">
+                <img src="book6.jpg" alt="Book 6">
+                <h3>Book Title 6</h3>
+                <p>A brief description of Book 6.</p>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <h2 class="section-title">What Our Readers Say</h2>
+        <div class="reviews-container">
+            <div id="review-card-main" class="review-card">
+                <p>"Amazing selection of books! Highly recommend Book Haven for all book lovers."</p>
+                <h4>- Reader 1</h4>
+            </div>
+            <div class="review-card">
+                <p>"Fantastic service and great collection of both classics and new releases!"</p>
+                <h4>- Reader 2</h4>
+            </div>
+            <div class="review-card">
+                <p>"Book Haven is my go-to for all my reading needs. Love the new arrivals section!"</p>
+                <h4>- Reader 3</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="section-title">Contact Us</h2>
+        <form action="#" class="contact-form">
+            <input type="text" placeholder="Your Name" required>
+            <input type="email" placeholder="Your Email" required>
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Book Haven. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+        <script src="/js/auth.js"></script>
+        <script src="/js/books.js"></script>
+        <script src="/js/ui.js"></script>
+        <script src="/js/form.js"></script>
+        <script src="/js/helper.js"></script>
+        <script src="/js/users.js"></script>
+</body>
+</html>

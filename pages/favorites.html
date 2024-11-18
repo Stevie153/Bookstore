@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorites - Book Haven</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/style.css"/>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="header-1">
+            <a href="user.html" class="logo"><i class="fas fa-book"></i> Book Haven</a>
+            <form action="" class="search-form">
+                <input type="search" placeholder="Search here..." id="search-box">
+                <label for="search-box" class="fas fa-search"></label>
+            </form>
+            <div class="icons">
+                <a href="/pages/favorites.html" class="fas fa-heart"></a>
+                <a href="/pages/cart.html" class="fas fa-shopping-cart"></a>
+                <div id="login-btn" class="fas fa-user"></div>
+                <span id="user-name-display" class="user-name"></span>
+            </div>
+        </div>
+        <div class="header-2">
+            <nav class="navbar">
+                <a href="/pages/user.html">Home</a>
+                <a href="#featured">Featured</a>
+                <a href="#arrivals">Arrivals</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="favorites" class="favorites-section">
+        <h2 class="section-title">Your Favorite Books</h2>
+        <div id="favorites-items" class="favorites-items">
+            <!-- Favorite books will be dynamically loaded here -->
+        </div>
+        <p id="no-favorites" style="display: none; text-align: center; margin-top: 20px;">You haven't added any books to your favorites yet!</p>
+    </section>
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 Book Haven. All Rights Reserved.</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="utils.js"></script>
+    <script src="favorites.js"></script>
+    <script src="users.js"></script>
+    <script src="alljs.js"></script>
+</body>
+</html>
