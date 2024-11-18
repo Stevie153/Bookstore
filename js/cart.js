@@ -95,3 +95,9 @@ function addToCart(item) {
     localStorage.setItem("cart", JSON.stringify(cart));
     alert(`${item.title} has been added to your cart!`);
 }
+
+
+localStorage.setItem("cart", JSON.stringify([
+    { title: "Hell's Paradise", price: 19.99, quantity: 1, image: "https://s1.zerochan.net/Jigokuraku.600.3851361.jpg" },
+    { title: "One Piece", price: 12.49, quantity: 2, image: "https://s1.zerochan.net/ONE.PIECE.600.4249233.jpg" }
+]));

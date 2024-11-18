@@ -1,0 +1,56 @@
+<!-- settings.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Admin</title>
+    <link rel="stylesheet" href="/adminstyle.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h3>Admin Dashboard</h3>
+        </div>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="books.html">Books</a></li>
+            <li><a href="authors.html">Authors</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="users.html">Users</a></li>
+            <li><a href="settings.html">Settings</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Navbar -->
+        <header class="navbar">
+            <div class="navbar-left">
+                <h2>Settings</h2>
+            </div>
+            <div class="navbar-right">
+                <span class="user-profile">Welcome, Admin</span>
+                <button id="logout-btn" class="btn btn-danger">Logout</button>
+            </div>
+        </header>
+
+        <!-- Settings Form -->
+        <div class="content">
+            <h3>Application Settings</h3>
+            <form id="settings-form">
+                <label for="app-name">App Name</label>
+                <input type="text" id="app-name" placeholder="Enter app name">
+
+                <label for="app-email">Support Email</label>
+                <input type="email" id="app-email" placeholder="Enter support email">
+
+                <button type="submit" class="btn btn-success">Save Settings</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/logout.js"></script>
+</body>
+</html>
