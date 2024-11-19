@@ -7,6 +7,7 @@ const fetcher = async(url,method="GET",body)=>
                 method: method,            
                 headers: {
                     'Content-Type': 'application/json',
+                    "ngrok-skip-browser-warning": true,
                     
                 },
                 body: body? JSON.stringify(body):null
@@ -62,7 +63,7 @@ document.getElementById("sign__in").addEventListener("submit", async function (e
             localStorage.setItem("userRole", userRole);
 
             // Optionally redirect to the dashboard or other page
-            window.location.href = "../admin/dashboard.html"; // Redirect to user dashboard
+            window.location.href = "/admin/pages/dashboard.html"; // Redirect to user dashboard
         }
     } catch (error) {
         console.error("Login failed:", error);

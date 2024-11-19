@@ -313,59 +313,58 @@
 
 // Fetch and render books data
 async function fetchBooks() {
-    const apiUrl = "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=10";
-    const headers = {
-      "ngrok-skip-browser-warning": true,
-    };
-  
-    try {
-      const response = await fetch(apiUrl, { headers });
-  
-      // Handle non-JSON or HTTP errors
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      // Parse JSON response
-      const data = await response.json();
-      console.log("Fetched Books Data:", data);
-  
-      // Assuming books are in `data.data.items`
-      const books = data.data.items;
-      localStorage.setItem("books", JSON.stringify(books)); // Save to localStorage
-      renderBooks(books); // Render books on the page
-    } catch (error) {
-      console.error("Error fetching books:", error);
+  const apiUrl = "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=10";
+  const headers = {
+    "ngrok-skip-browser-warning": true,
+  };
+
+  try {
+    const response = await fetch(apiUrl, { headers });
+
+    // Handle non-JSON or HTTP errors
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
+
+    // Parse JSON response
+    const data = await response.json();
+    console.log("Fetched Books Data:", data);
+
+    // Assuming books are in `data.data.items`
+    const books = data.data.items;
+    localStorage.setItem("books", JSON.stringify(books)); // Save to localStorage
+    renderBooks(books); // Render books on the page
+  } catch (error) {
+    console.error("Error fetching books:", error);
   }
-  
-  // Render books into the DOM
-  function renderBooks(books) {
-    const container = document.getElementById("featuredcontainer");
-    container.innerHTML = ""; // Clear container before adding new content
-  
-    books.forEach((book) => {
-      const bookCard = `
-        <div class="book-card">
-          <img src="${book.bookImgUrl}" alt="${book.title}">
-          <h3>${book.title}</h3>
-          <p>${book.description}</p>
-          <p>Price: $${book.price}</p>
-          <button class="btn" onclick="navigateToBook(${book.id})">View Details</button>
-        </div>
-      `;
-      container.insertAdjacentHTML("beforeend", bookCard);
-    });
-  }
-  
-  // Navigate to book details page
-  function navigateToBook(bookId) {
-    console.log("Navigating to book ID:", bookId);
-    window.location.href = `/pages/book.html?bookId=${bookId}`;
-  }
-  
-  // Initialize
-  document.addEventListener("DOMContentLoaded", () => {
-    fetchBooks();
+}
+
+// Render books into the DOM
+function renderBooks(books) {
+  const container = document.getElementById("featuredcontainer");
+  container.innerHTML = ""; // Clear container before adding new content
+
+  books.forEach((book) => {
+    const bookCard = `
+      <div class="book-card">
+        <img src="${book.bookImgUrl}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p>${book.description}</p>
+        <p>Price: $${book.price}</p>
+        <button class="btn" onclick="navigateToBook(${book.id})">View Details</button>
+      </div>
+    `;
+    container.insertAdjacentHTML("beforeend", bookCard);
   });
-  
+}
+
+// Navigate to book details page
+function navigateToBook(bookId) {
+  console.log("Navigating to book ID:", bookId);
+  window.location.href = `/pages/book.html?bookId=${bookId}`;
+}
+
+// Initialize
+document.addEventListener("DOMContentLoaded", () => {
+  fetchBooks();
+});
