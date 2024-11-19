@@ -12,9 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   initializeDashboard();
 });
 
-let currentBookId = null;
+let currentBookId = null; // Track the current book ID for editing
 
-function initializeDashboard() {
+// Initialize Dashboard
+async function initializeDashboard() {
   const addBookBtn = document.getElementById("add-book-btn");
   const addBookOverlay = document.getElementById("add-book-overlay");
   const closeOverlayBtn = document.getElementById("close-overlay-btn");
@@ -36,40 +37,78 @@ function initializeDashboard() {
   saveBookBtn.addEventListener("click", async () => {
     const book = getFormData();
     if (validateBook(book)) {
-      currentBookId ? await updateBook(currentBookId, book) : await addBook(book);
+      if (currentBookId) {
+        await updateBook(currentBookId, book);
+      } else {
+        await addBook(book);
+      }
     } else {
-      alert("Please fill all fields correctly.");
+      alert("Please fill in all fields correctly.");
     }
   });
 
+  // Fetch books and categories
   loadBooks(bookTable);
+  await loadCategories(); // Fetch and populate categories dropdown
 }
 
+// Function to fetch categories and populate the dropdown
+async function loadCategories() {
+  const categorySelect = document.getElementById("book-categories");
+  
+  try {
+    const response = await fetch("https://glad-lion-holy.ngrok-free.app/api/categories/all?pageNumber=1&pageSize=100", {
+      headers: { "ngrok-skip-browser-warning": true },
+    });
+
+    if (!response.ok) throw new Error("Failed to fetch categories");
+
+    const data = await response.json();
+    const categories = data.data.items;
+
+    // Clear any existing options before adding new ones
+    categorySelect.innerHTML = '<option value="">Select Category</option>';
+
+    categories.forEach((category) => {
+      const option = document.createElement("option");
+      option.value = category;  // category ID is stored as the value
+      option.textContent = category;  // category title is shown to the user
+      categorySelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error("Error loading categories:", error);
+    alert("Error fetching categories. Please try again later.");
+  }
+}
+
+// Clear the form fields
 function clearForm() {
   document.getElementById("book-title").value = "";
   document.getElementById("book-author").value = "";
   document.getElementById("book-description").value = "";
   document.getElementById("book-img-url").value = "";
   document.getElementById("book-file-path").value = "";
-  document.getElementById("book-categories").value = "";
+  document.getElementById("book-categories").value = "";  // Reset the category dropdown
   document.getElementById("book-price").value = "";
 }
 
+// Get form data (including the selected category)
 function getFormData() {
   return {
     title: document.getElementById("book-title").value.trim(),
     author: document.getElementById("book-author").value.trim(),
     description: document.getElementById("book-description").value.trim(),
     bookImgUrl: document.getElementById("book-img-url").value.trim(),
-    filePath: document.getElementById("book-file-path").value.trim(),
-    categories: document.getElementById("book-categories").value.trim().split(","),
+    bookfilePath: document.getElementById("book-file-path").value.trim(),
+    categoryName: [document.getElementById("book-categories").value.trim()], // Use the selected category ID
     price: parseFloat(document.getElementById("book-price").value.trim()),
   };
 }
 
+// Load books into the table (book display)
 async function loadBooks(bookTable) {
   try {
-    const response = await fetch("https://glad-lion-holy.ngrok-free.app/api/books/all?", {
+    const response = await fetch("https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=100", {
       headers: { "ngrok-skip-browser-warning": true },
     });
 
@@ -84,7 +123,7 @@ async function loadBooks(bookTable) {
           <td>${book.author}</td>
           <td>$${book.price.toFixed(2)}</td>
           <td><img src="${book.bookImgUrl}" alt="${book.title}" width="50"></td>
-          <td>${book.bookFilePath}</td>
+          <td> <a href="${book.bookFilePath}">${book.title}</a> </td>
           <td>
             <button class="btn btn-primary" onclick="editBook(${book.id})">Edit</button>
             <button class="btn btn-danger" onclick="deleteBook(${book.id})">Delete</button>
@@ -97,16 +136,17 @@ async function loadBooks(bookTable) {
   }
 }
 
-const userToken = localStorage.getItem("authToken");
-
+// Add a new book
 async function addBook(book) {
+  const userToken = localStorage.getItem("authToken");
+
   try {
     const response = await fetch("https://glad-lion-holy.ngrok-free.app/api/books/add-book", {
       method: "POST",
-      headers: { 
-        "Content-Type": "application/json", 
-        "ngrok-skip-browser-warning": true, 
-        Authorization: `Bearer ${userToken}`, 
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": true,
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify(book),
     });
@@ -120,14 +160,17 @@ async function addBook(book) {
   }
 }
 
+// Update an existing book
 async function updateBook(bookId, book) {
+  const userToken = localStorage.getItem("authToken");
+
   try {
     const response = await fetch(`https://glad-lion-holy.ngrok-free.app/api/books/update-book/${bookId}`, {
       method: "PUT",
-      headers: { 
-        "Content-Type": "application/json", 
-        "ngrok-skip-browser-warning": true, 
-        Authorization: `Bearer ${userToken}`, 
+      headers: {
+        "Content-Type": "application/json",
+        "ngrok-skip-browser-warning": true,
+        Authorization: `Bearer ${userToken}`,
       },
       body: JSON.stringify(book),
     });
@@ -141,24 +184,7 @@ async function updateBook(bookId, book) {
   }
 }
 
-async function deleteBook(bookId) {
-  if (!confirm("Are you sure you want to delete this book?")) return;
-
-  try {
-    const response = await fetch(`https://glad-lion-holy.ngrok-free.app/api/books/${bookId}`, {
-      method: "DELETE",
-      headers: { "ngrok-skip-browser-warning": true },
-    });
-
-    if (!response.ok) throw new Error("Failed to delete book");
-
-    alert("Book deleted successfully!");
-    location.reload();
-  } catch (error) {
-    console.error("Error deleting book:", error);
-  }
-}
-
+// Validate book form
 function validateBook(book) {
   return (
     book.title &&
@@ -166,12 +192,13 @@ function validateBook(book) {
     book.description &&
     book.bookImgUrl &&
     book.filePath &&
-    book.categories.length > 0 &&
+    book.categoryName.length > 0 &&
     !isNaN(book.price) &&
     book.price >= 0
   );
 }
 
+// Edit an existing book
 function editBook(bookId) {
   currentBookId = bookId;
 
@@ -188,7 +215,7 @@ function editBook(bookId) {
       document.getElementById("book-description").value = book.description;
       document.getElementById("book-img-url").value = book.bookImgUrl;
       document.getElementById("book-file-path").value = book.filePath;
-      document.getElementById("book-categories").value = book.categories.join(", ");
+      document.getElementById("book-categories").value = book.categories.join(", "); // Pre-select the categories
       document.getElementById("book-price").value = book.price;
 
       // Change the overlay title

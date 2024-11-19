@@ -1,93 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Books - Admin Dashboard</title>
-    <link rel="stylesheet" href="/adminstyle.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/adminstyle.css" />
+  </head>
+  <body>
     <!-- Sidebar -->
     <nav class="sidebar">
-        <div class="sidebar-header">
-            <h3>Admin Dashboard</h3>
-        </div>
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="books.html" class="active">Books</a></li>
-            <li><a href="authors.html">Authors</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="users.html">Users</a></li>
-            <li><a href="settings.html">Settings</a></li>
-        </ul>
+      <div class="sidebar-header">
+        <h3>Admin Dashboard</h3>
+      </div>
+      <ul>
+        <li><a href="dashboard.html">Dashboard</a></li>
+        <li><a href="books.html" class="active">Books</a></li>
+        <li><a href="authors.html">Authors</a></li>
+        <li><a href="categories.html">Categories</a></li>
+        <li><a href="users.html">Users</a></li>
+        <li><a href="settings.html">Settings</a></li>
+      </ul>
     </nav>
 
     <!-- Main Content -->
     <div class="main-content">
-        <!-- Navbar -->
-        <header class="navbar">
-            <div class="navbar-left">
-                <button id="add-book-btn" class="btn btn-primary">Add Book</button>
-            </div>
-            <div class="navbar-right">
-                <span class="user-profile">Welcome, Admin</span>
-                <button id="logout-btn" class="btn btn-danger">Logout</button>
-            </div>
-        </header>
-
-        <!-- Books List -->
-        <div class="content">
-            <h2 class="content-title">Books List</h2>
-            <table id="book-table">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Title</th>
-                        <th>Author</th>
-                        <th>Price</th>
-                        <th>Book Image</th>
-                        <th>File Path</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Book entries will be populated here -->
-                </tbody>
-            </table>
+      <!-- Navbar -->
+      <header class="navbar">
+        <div class="navbar-left">
+          <button id="add-book-btn" class="btn btn-primary">Add Book</button>
         </div>
+        <div class="navbar-right">
+          <span class="user-profile">Welcome, Admin</span>
+          <button id="logout-btn" class="btn btn-danger">Logout</button>
+        </div>
+      </header>
+
+      <!-- Books List -->
+      <div class="content">
+        <h2 class="content-title">Books List</h2>
+        <table id="book-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Author</th>
+              <th>Price</th>
+              <th>Book Image</th>
+              <th>File Path</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Book entries will be populated here -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Add/Edit Book Overlay (Form) -->
     <div class="overlay" id="add-book-overlay">
-        <div class="add-book-form">
-            <h2 id="form-title">Add New Book</h2>
-            <label for="book-title">Title:</label>
-            <input type="text" id="book-title" placeholder="Enter book title">
+      <div class="add-book-form">
+        <h2 id="form-title">Add New Book</h2>
+        <label for="book-title">Title:</label>
+        <input type="text" id="book-title" placeholder="Enter book title" />
 
-            <label for="book-author">Author:</label>
-            <input type="text" id="book-author" placeholder="Enter book author">
+        <label for="book-author">Author:</label>
+        <input type="text" id="book-author" placeholder="Enter book author" />
 
-            <label for="book-description">Description:</label>
-            <textarea id="book-description" placeholder="Enter book description"></textarea>
+        <label for="book-description">Description:</label>
+        <textarea
+          id="book-description"
+          placeholder="Enter book description"
+        ></textarea>
 
-            <label for="book-img-url">Book Image URL:</label>
-            <input type="text" id="book-img-url" placeholder="Enter image URL">
+        <label for="book-img-url">Book Image URL:</label>
+        <input type="text" id="book-img-url" placeholder="Enter image URL" />
 
-            <label for="book-file-path">File Path:</label>
-            <input type="text" id="book-file-path" placeholder="Enter file path">
+        <label for="book-file-path">File Path:</label>
+        <input type="text" id="book-file-path" placeholder="Enter file path" />
 
-            <label for="book-categories">Categories (comma-separated):</label>
-            <input type="text" id="book-categories" placeholder="Enter categories">
+        <label for="book-categories">Category</label>
+        <select id="book-categories" name="book-categories" required>
+          <option value="">Select Category</option>
+        </select>
 
-            <label for="book-price">Price:</label>
-            <input type="number" id="book-price" placeholder="Enter book price" min="0">
+        <label for="book-price">Price:</label>
+        <input
+          type="number"
+          id="book-price"
+          placeholder="Enter book price"
+          min="0"
+        />
 
-            <button id="save-book-btn" class="btn btn-success">Save</button>
-            <button id="close-overlay-btn" class="btn btn-danger">Cancel</button>
-        </div>
+        <button id="save-book-btn" class="btn btn-success">Save</button>
+        <button id="close-overlay-btn" class="btn btn-danger">Cancel</button>
+      </div>
     </div>
 
     <script src="/admin/js/book.js"></script>
     <script src="/admin/js/logout.js"></script>
-</body>
+  </body>
 </html>

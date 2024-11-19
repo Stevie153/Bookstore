@@ -8,6 +8,6 @@ document.getElementById('logout-btn').addEventListener('click', function () {
     localStorage.removeItem('loggedInUsername');
 
     // Redirect to the login page
-    window.location.href = '/pages/admin.html';
+    window.location.href = '/admin/admin.html';
 });
 

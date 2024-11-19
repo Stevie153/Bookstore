@@ -24,17 +24,18 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="main-content">
-        <!-- Navbar -->
-        <header class="navbar">
-            <div class="navbar-left">
-                <h2>Categories List</h2>
-            </div>
-            <div class="navbar-right">
-                <span class="user-profile">Welcome, Admin</span>
-                <button id="logout-btn" class="btn btn-danger">Logout</button>
-            </div>
-        </header>
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="navbar-left">
+            <button id="add-category-btn" class="btn btn-primary">Add Category</button>
+        </div>
+        <div class="navbar-right">
+            <span class="user-profile">Welcome, Admin</span>
+            <button id="logout-btn" class="btn btn-danger">Logout</button>
+        </div>
+    </header>
 
         <!-- Categories List -->
         <div class="content">
@@ -54,6 +55,21 @@
         </div>
     </div>
 
+
+    <!-- Add/Edit Book Overlay (Form) -->
+    <div class="overlay" id="add-category-overlay">
+        <div class="add-category-form">
+            <h2 id="form-title">Add New Category</h2>
+            <label for="category-title">Title:</label>
+            <input type="text" id="category-title" placeholder="Enter Category ">           
+
+            <button id="save-category-btn" class="btn btn-success">Save</button>
+            <button id="close-overlay-btn" class="btn btn-danger">Cancel</button>
+        </div>
+    </div>
+
+
     <script src="/admin/js/logout.js"></script>
+    <script src="/admin/js/category.js"></script>
 </body>
 </html>

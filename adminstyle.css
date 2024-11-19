@@ -262,6 +262,35 @@ table tbody tr:hover {
     margin-right: 0;
 }
 
+.add-category-form {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    width: 400px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.add-category-form input,
+.add-category-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-category-form button {
+    width: 48%;
+    margin-right: 4%;
+}
+
+.add-category-form button:last-child {
+    margin-right: 0;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     .sidebar {
