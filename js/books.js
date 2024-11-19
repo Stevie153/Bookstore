@@ -313,7 +313,7 @@
 
 // Fetch and render books data
 async function fetchBooks() {
-  const apiUrl = "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=10";
+  const apiUrl = "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=3";
   const headers = {
     "ngrok-skip-browser-warning": true,
   };
@@ -347,11 +347,15 @@ function renderBooks(books) {
   books.forEach((book) => {
     const bookCard = `
       <div class="book-card">
+       <div class="book-card-opt">
         <img src="${book.bookImgUrl}" alt="${book.title}">
         <h3>${book.title}</h3>
         <p>${book.description}</p>
         <p>Price: $${book.price}</p>
-        <button class="btn" onclick="navigateToBook(${book.id})">View Details</button>
+       </div>
+        <div class="book-card-options">
+        <button class="btn" onclick="navigateToBook(${book.id})"> <i class="fas fa-info-circle"></i> View Details </button> <button class="btn" onclick="addToCart(${book.id})"> <i class="fas fa-shopping-cart"></i> Add to Cart </button> <button class="btn" onclick="addToWishlist(${book.id})"> <i class="fas fa-heart"></i> Add to Wishlist </button>
+        </div>
       </div>
     `;
     container.insertAdjacentHTML("beforeend", bookCard);

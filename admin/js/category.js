@@ -86,10 +86,12 @@ async function loadCategory(catTable) {
         <tr>
           <td>${index + 1}</td>
           <td>${cat}</td>
+
           <td>
+          <div class="btn-container">
             <button class="btn btn-primary" onclick="editCategory(${index})">Edit</button>
             <button class="btn btn-danger" onclick="deleteCategory(${index})">Delete</button>
-          </td>
+          </div></td>
         </tr>`;
       catTable.insertAdjacentHTML("beforeend", row);
     });

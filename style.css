@@ -321,9 +321,26 @@ body {
     border-radius: .5rem;
     box-shadow: var(--box-shadow);
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
-
+.book-card-opt{
+  height: 70%;
+    
+    /* justify-content: center; */
+}
+.book-card-options{
+    position: relative;
+    /* top: relative; */
+    display: flex;
+    flex-direction: column;
+    
+    
+    /* justify-content: center; */
+}
 .book-card img {
+
     width: 100%;
     height: 18rem;
     border-radius: .5rem;
@@ -339,6 +356,7 @@ body {
 .book-card p {
     font-size: 1.4rem;
     color: var(--light-color);
+
 }
 
 /* New Arrivals Section */
