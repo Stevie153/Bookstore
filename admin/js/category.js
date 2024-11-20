@@ -1,16 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const userRole = localStorage.getItem("userRole");
+// document.addEventListener("DOMContentLoaded", () => {
+//   const userRole = localStorage.getItem("userRole");
 
-  // Redirect non-admin users
-  if (userRole !== "ADMIN") {
-    alert("Access Denied: Only admins can access this page.");
-    window.location.href = "/index.html";
-    return;
-  }
+//   // Redirect non-admin users
+//   if (userRole !== "ADMIN") {
+//     alert("Access Denied: Only admins can access this page.");
+//     window.location.href = "/index.html";
+//     return;
+//   }
 
-  // Initialize Dashboard
-  initializeDashboard();
-});
+//   // Initialize Dashboard
+//   initializeDashboard();
+// });
 
 let currentCatId = null; // Track the current category ID for editing
 

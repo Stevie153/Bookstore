@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+}
+.categories {
+    width: 20%;
+    padding: 15px;
+    border-right: 1px solid #ccc;
+}
+.categories h3 {
+    margin-bottom: 15px;
+}
+.categories ul {
+    list-style: none;
+    padding: 0;
+}
+.categories ul li {
+    margin-bottom: 10px;
+}
+.products {
+    width: 80%;
+    padding: 15px;
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+.product img {
+    width: 100%;
+    height: auto;
+}
+.product h4 {
+    margin: 10px 0;
+}
+.product p {
+    margin: 5px 0;
+}
+.price {
+    font-weight: bold;
+    color: green;
+}
+.old-price {
+    text-decoration: line-through;
+    color: #888;
+}

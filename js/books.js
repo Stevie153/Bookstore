@@ -1,4 +1,3 @@
-
 // const featuredBooks = [
 //     {
 //       id: 5,
@@ -23,7 +22,7 @@
 //       updatedAt: new Date("2024-06-02"),
 //     },
 //   ];
-  
+
 //   const arrivalBooks = [
 //     {
 //       id: 7,
@@ -59,10 +58,10 @@
 //       updatedAt: new Date("2024-08-02"),
 //     },
 //   ];
-  
+
 //   const addArrivals = (data) => {
 //     const fragment = document.createDocumentFragment();
-  
+
 //     if (data.length > 0) {
 //       data.map((item) => {
 //         const divTag = document.createElement("div");
@@ -76,7 +75,7 @@
 //         const author = document.createElement("p");
 //         const createdAt = document.createElement("p");
 //         const updatedAt = document.createElement("p");
-  
+
 //         // Add Contents to created elements
 //         hTag.textContent = item.name;
 //         pTag.textContent = item.description;
@@ -86,7 +85,7 @@
 //         createdAt.textContent = item.createdAt;
 //         updatedAt.textContent = item.updatedAt;
 //         imgTag.src = item.image;
-  
+
 //         divTag.appendChild(imgTag);
 //         divTag.appendChild(hTag);
 //         divTag.appendChild(pTag);
@@ -95,21 +94,19 @@
 //         divTag.appendChild(author);
 //         divTag.appendChild(createdAt);
 //         divTag.appendChild(updatedAt);
-  
+
 //         fragment.appendChild(divTag);
 //       });
 //     }
-  
+
 //     return fragment;
 //   };
-  
+
 //   document.addEventListener("DOMContentLoaded", function () {
 //     // Variables
-    
+
 //     const header2 = document.querySelector(".header-2");
-   
-  
-  
+
 //     window.onscroll = () => {
 //       if (window.scrollY > 80) {
 //         header2.classList.add("active");
@@ -117,25 +114,19 @@
 //         header2.classList.remove("active");
 //       }
 //     };
-  
-    
+
 //     if (window.scrollY > 80) {
 //       header2.classList.add("active");
 //     }
-  
-   
-  
+
 //     const arrivalsContainer = document.getElementById("arrivalscontainer");
 //     const featuredContainer = document.getElementById("featuredcontainer");
-  
+
 //     //console.log(arrivalsContainer);
-  
+
 //     arrivalsContainer.appendChild(addArrivals(arrivalBooks));
 //     featuredContainer.appendChild(addArrivals(featuredBooks));
 //   });
-
-
-
 
 // const fetcher = async(url,method="GET",body)=>
 //   {
@@ -143,28 +134,28 @@
 //       try {
 //           // Send POST request to the server
 //           const response = await fetch(`${baseUrl}/${url}`, {
-//               method: method,            
+//               method: method,
 //               headers: {
 //                   'Content-Type': 'application/json',
 //                   'ngrok-skip-browser-warnings': true
-                  
+
 //               },
 //               body: body? JSON.stringify(body):null
 //           });
-  
+
 //           // Check for successful response
 //           if (response.ok) {
 //               const data = await response.json();
-            
+
 //               //alert(data.message);
 //               return data.data;
-          
+
 //               // Redirect or perform further actions
 //           } else {
 //               const errorData = await response.json();
 //               alert("Error: " + errorData.message);
-//               throw errorData;	
-  
+//               throw errorData;
+
 //           }
 //       } catch (error) {
 //           console.error('Error:', error);
@@ -172,7 +163,6 @@
 //           throw error;
 //       }
 //   }
-  
 
 // // DOM Elements
 // const addBookOverlay = document.getElementById("add-book-overlay");
@@ -184,8 +174,6 @@
 // // API endpoints
 // const GET_BOOKS_ENDPOINT = "books/all"; // Endpoint for GET books
 // const ADD_BOOK_ENDPOINT = "books/add-book"; // Endpoint for POST (add) a book
-
-
 
 // // Check if the user is logged in and is an admin
 // const checkAdminRole = () => {
@@ -304,16 +292,10 @@
 // // Check if the user is an admin
 // checkAdminRole();
 
-
-
-
-
-
-
-
 // Fetch and render books data
 async function fetchBooks() {
-  const apiUrl = "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=3";
+  const apiUrl =
+    "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=2&pageSize=4";
   const headers = {
     "ngrok-skip-browser-warning": true,
   };
@@ -321,17 +303,14 @@ async function fetchBooks() {
   try {
     const response = await fetch(apiUrl, { headers });
 
-    // Handle non-JSON or HTTP errors
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
 
-    // Parse JSON response
     const data = await response.json();
     console.log("Fetched Books Data:", data);
 
-    // Assuming books are in `data.data.items`
-    const books = data.data.items;
+    const books = data.data.items; // Assuming books are in `data.data.items`
     localStorage.setItem("books", JSON.stringify(books)); // Save to localStorage
     renderBooks(books); // Render books on the page
   } catch (error) {
@@ -347,25 +326,45 @@ function renderBooks(books) {
   books.forEach((book) => {
     const bookCard = `
       <div class="book-card">
-       <div class="book-card-opt">
-        <img src="${book.bookImgUrl}" alt="${book.title}">
-        <h3>${book.title}</h3>
-        <p>${book.description}</p>
-        <p>Price: $${book.price}</p>
-       </div>
+        <div class="book-card-opt">
+          <img src="${book.bookImgUrl}" alt="${book.title}">
+          <h3>${book.title}</h3>
+          <p class="long-text">${book.author}</p>
+          <p>${book.categories}</p>
+          <p>Price: $${book.price}</p>
+        </div>
         <div class="book-card-options">
-        <button class="btn" onclick="navigateToBook(${book.id})"> <i class="fas fa-info-circle"></i> View Details </button> <button class="btn" onclick="addToCart(${book.id})"> <i class="fas fa-shopping-cart"></i> Add to Cart </button> <button class="btn" onclick="addToWishlist(${book.id})"> <i class="fas fa-heart"></i> Add to Wishlist </button>
+          <button class="btn" onclick="navigateToBook('${book.id}')"> 
+            <i class="fas fa-info-circle"></i> View Details 
+          </button> 
+          <button class="btn" onclick="addToCart('${book.id}')"> 
+            <i class="fas fa-shopping-cart"></i> Add to Cart 
+          </button> 
+          <button class="btn" onclick="addToWishlist('${book.id}')"> 
+            <i class="fas fa-heart"></i> Add to Wishlist 
+          </button>
         </div>
       </div>
     `;
     container.insertAdjacentHTML("beforeend", bookCard);
+  });
+
+  // Shorten long text for author details
+  const paragraphs = document.getElementsByClassName("long-text");
+  Array.from(paragraphs).forEach((para) => {
+    let text = para.innerHTML;
+    let words = text.split(" ");
+    if (words.length > 10) {
+      para.innerHTML = words.slice(0, 30).join(" ") + " ...";
+    }
   });
 }
 
 // Navigate to book details page
 function navigateToBook(bookId) {
   console.log("Navigating to book ID:", bookId);
-  window.location.href = `/pages/book.html?bookId=${bookId}`;
+  // Navigate to the book details page with the bookId as a query parameter
+  window.location.href = `/pages/product.html?bookId=${bookId}`;
 }
 
 // Initialize
