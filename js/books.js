@@ -295,7 +295,7 @@
 // Fetch and render books data
 async function fetchBooks() {
   const apiUrl =
-    "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=2&pageSize=4";
+    "https://glad-lion-holy.ngrok-free.app/api/books/all?pageNumber=1&pageSize=15";
   const headers = {
     "ngrok-skip-browser-warning": true,
   };
@@ -320,7 +320,7 @@ async function fetchBooks() {
 
 // Render books into the DOM
 function renderBooks(books) {
-  const container = document.getElementById("featuredcontainer");
+  const container = document.getElementById("featuredbookscontainer");
   container.innerHTML = ""; // Clear container before adding new content
 
   books.forEach((book) => {

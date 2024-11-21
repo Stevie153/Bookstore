@@ -7,28 +7,20 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/category.css">
-    
 </head>
 <body>
-  
     <!-- Header Section -->
-<header class="header">
+    <header class="header">
         <div class="header-1">
             <a href="./index.html" class="logo"><i class="fas fa-book "></i>Book Haven</a>
-            
-            
             <form action="" class="search-form">
                 <input type="search" placeholder="Search here..." id="search-box">
                 <label for="search-box" class="fas fa-search"></label>
             </form>
             <div class="icons">
-                
                 <a href="#" class="fas fa-heart"></a>
                 <a href="/pages/cart.html" class="fas fa-shopping-cart"></a>
                 <div id="login-btn" class="fas fa-user"></div>
-               
-                
             </div>
         </div>
         <div class="header-2">
@@ -41,115 +33,47 @@
                 <a href="#contact">Contact</a>
             </nav>
         </div>
-</header>
+    </header>
 
-       <!--login form-->
-
-    <!-- Login Form Container -->
-<div id="login-container" class="login-form-container">
-    <form id="sign__in" action="">
-        <div id="close-login-btn" class="fas fa-circle-xmark"></div>
-        <h3>Sign In</h3>
-        <span>Email</span>
-        <input type="email" name="" class="box" placeholder="Enter your email">
-        <span>Password</span>
-        <input type="password" name="" class="box" placeholder="Enter your password">
-        <div class="checkbox">
-            <input type="checkbox" id="remember-me">
-            <label for="remember-me">Remember me</label>
+    <!-- Category Section -->
+    <section id="bookCategory" class="book-category">
+        <div id="breadcrumb-trail" class="breadcrumb">
+            <a href="/index.html">Home</a> &gt; <span id="breadcrumb-title">Loading...</span>
         </div>
-        <input type="submit" value="Sign In" class="btn">
-        <p>Forgot password? <a href="#">Click here</a></p>
-        <p>Don't have an account? <a id="show__signup" href="#">Create one</a></p>
-    </form>
-</div>
-
-<!-- Sign-Up Form Container -->
-<div id="signup-container" class="login-form-container hidden">
-    <form id="sign__up" action="">
-        <div id="close-signup-btn" class="fas fa-circle-xmark"></div>
-        <h3>Sign Up</h3>
-        <p>Let's get started with your 30-day free trial</p>
-        <span>Username</span>
-        <input id="user__name" class="box" placeholder="Enter your name">
-        <span>Email</span>
-        <input id="e__mail"type="email" class="box" placeholder="Enter your email">
-        <span>Password</span>
-        <input id="pass__word" type="password" class="box" placeholder="Enter your password">
-        <span>Confirm Password</span>
-        <input id="confirm__password" type="password" class="box" placeholder="Confirm your password">
-        <input type="submit" value="Sign Up" class="btn" id="sign__up__btn">
-        <p>Already have an account? <a id="show__signin" href="#">Sign In</a></p>
-    </form>
-</div>
-
-    
-<section >
-    <!-- Main Content -->
-    <div class="container">
-        <div class="row">
-            <!-- Sidebar -->
-            <aside class="categories-sidebar">
-                <h3>Categories</h3>
-                <ul class="category-list">
-                    <li><a href="#">Arts & Photography</a></li>
-                    <li><a href="#">Baby</a></li>
-                    <li><a href="#">Biographies & Memoirs</a></li>
-                    <li><a href="#">Business & Money</a></li>
-                    <li><a href="#">Children</a></li>
-                    <li><a href="#">Christian Books & Bibles</a></li>
-                    <li><a href="#">Cookbooks</a></li>
-                    <li><a href="#">Health</a></li>
-                    <li><a href="#">History</a></li>
-                </ul>
-            </aside>
-        </div>
-    </div>
-</section>
-
-<section>
-            <!-- Book Grid -->
-            <div class="book-section">
+        <div id="bookCatContainer" class="bookCat-container">
+            <div class="row">
+                <!-- Sidebar -->
+                <aside class="categories-sidebar">
+                    <h3>Categories</h3>
+                    <ul id="dynamicCategoryList" class="category-list">
+                        <!-- Dynamic Categories Here -->
+                    </ul>
+                </aside>
+            </div>
+            <!-- Book Section -->
+            <div id="bookSectionContainer" class="book-section-container">
                 <div class="sorting-bar">
-                    <p>Showing all 20 results</p>
+                    <p style="font-size: 2rem;" id="resultsCount">Showing results</p>
                     <select id="sort-dropdown" class="sort-dropdown">
                         <option value="default">Default Sorting</option>
                         <option value="price-low-to-high">Price: Low to High</option>
                         <option value="price-high-to-low">Price: High to Low</option>
                     </select>
                 </div>
-                <div class="book-card">
-                    <div class="book-card-opt">
-                        <img src="" alt="">
-                        <h3>Hunter x Hunter</h3>
-                        <p class="long-text">sagamoto</p>
-                        <p>Anime</p>
-                        <p>Price: $100</p>
-                    </div>
-                    <div class="book-card-options">
-                        <div class="book-actions">
-                            <a href=""  class="btn">
-                                <i class="fas fa-info-circle"></i>
-                            </a>
-                            <a href=""  class="btn">
-                                <i class="fas fa-heart"></i>
-                            </a>
-                            <a href=""  class="btn">
-                                <i class="fas fa-shopping-cart"></i>
-                            </a>
-                        </div>
-                     
-                    </div>
+                <div id="featuredcontainer" class="featured-container">
+                    <!-- Dynamic Books Here -->
                 </div>
             </div>
-     
-        </section>
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer class="footer">
         <p>&copy; 2024 Book Haven. All Rights Reserved.</p>
     </footer>
 
-    <script src="script.js"></script>
-    <script src="category.js"></script>
+    <script src="/js/category.js"></script>
+    <script src="/js/product.js"></script>
+    
 </body>
 </html>
