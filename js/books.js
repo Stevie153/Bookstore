@@ -326,27 +326,65 @@ function renderBooks(books) {
   books.forEach((book) => {
     const bookCard = `
       <div class="book-card">
-        <div class="book-card-opt">
-          <img src="${book.bookImgUrl}" alt="${book.title}">
-          <h3>${book.title}</h3>
-          <p class="long-text">${book.author}</p>
-          <p>${book.categories}</p>
-          <p>Price: $${book.price}</p>
+    <div class="book-card-opt">
+        <img src="${book.bookImgUrl}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p class="long-text">${book.author}</p>
+        <p>${book.categories}</p>
+        <p>Price: $${book.price}</p>
+    </div>
+    <div class="book-card-options">
+        <div class="book-actions">
+            <a href="javascript:void(0)" onclick="navigateToBook('${book.id}')" class="btn">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="javascript:void(0)" onclick="addToWishlist('${book.id}')" class="btn">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="javascript:void(0)" onclick="addToCart('${book.id}')" class="btn">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
         </div>
-        <div class="book-card-options">
-          <button class="btn" onclick="navigateToBook('${book.id}')"> 
-            <i class="fas fa-info-circle"></i> View Details 
-          </button> 
-          <button class="btn" onclick="addToCart('${book.id}')"> 
-            <i class="fas fa-shopping-cart"></i> Add to Cart 
-          </button> 
-          <button class="btn" onclick="addToWishlist('${book.id}')"> 
-            <i class="fas fa-heart"></i> Add to Wishlist 
-          </button>
-        </div>
-      </div>
+     
+    </div>
+</div>
     `;
     container.insertAdjacentHTML("beforeend", bookCard);
+
+    
+  });
+
+
+  const newArrival = document.getElementById("arrivalscontainer");
+  newArrival.innerHTML = ""; // Clear container before adding new content
+
+  books.forEach((book) => {
+    const bookCard = `
+      <div class="book-card">
+    <div class="book-card-opt">
+        <img src="${book.bookImgUrl}" alt="${book.title}">
+        <h3>${book.title}</h3>
+        <p class="long-text">${book.author}</p>
+        <p>${book.categories}</p>
+        <p>Price: $${book.price}</p>
+    </div>
+    <div class="book-card-options">
+        <div class="book-actions">
+            <a href="javascript:void(0)" onclick="navigateToBook('${book.id}')" class="btn">
+                <i class="fas fa-info-circle"></i>
+            </a>
+            <a href="javascript:void(0)" onclick="addToWishlist('${book.id}')" class="btn">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="javascript:void(0)" onclick="addToCart('${book.id}')" class="btn">
+                <i class="fas fa-shopping-cart"></i>
+            </a>
+        </div>
+     
+    </div>
+</div>
+    `;
+    newArrival.insertAdjacentHTML("beforeend", bookCard);
   });
 
   // Shorten long text for author details

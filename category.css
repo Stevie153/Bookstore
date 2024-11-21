@@ -1,50 +1,163 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Main container */
 .container {
-    display: flex;
+    display: flex; /* Use flexbox for a side-by-side layout */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-.categories {
-    width: 20%;
-    padding: 15px;
-    border-right: 1px solid #ccc;
+
+/* Sidebar */
+.categories-sidebar {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 250px; /* Fixed width for sidebar */
+    margin-right: 20px; /* Space between sidebar and book grid */
 }
-.categories h3 {
-    margin-bottom: 15px;
+
+.categories-sidebar h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
 }
-.categories ul {
+
+.category-list {
     list-style: none;
     padding: 0;
 }
-.categories ul li {
-    margin-bottom: 10px;
-}
-.products {
-    width: 80%;
-    padding: 15px;
-}
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-}
-.product {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
-}
-.product img {
-    width: 100%;
-    height: auto;
-}
-.product h4 {
+
+.category-list li {
     margin: 10px 0;
 }
-.product p {
-    margin: 5px 0;
+
+.category-list a {
+    text-decoration: none;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease;
 }
-.price {
+
+.category-list a:hover {
+    color: #007bff;
+}
+
+/* Book Grid Section */
+.book-section {
+    flex: 1; /* The book section will take up the remaining space */
+}
+
+.sorting-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sorting-bar p {
+    font-size: 16px;
+    color: #555;
+}
+
+.sort-dropdown {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Book Card */
+.book-card {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.book-card-opt {
+    background-color: #fff;
+    width: calc(33.333% - 20px);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-card-opt img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.book-card-opt h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.book-card-opt p {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 10px;
+}
+
+.book-card-opt p.price {
+    font-size: 18px;
+    color: #007bff;
     font-weight: bold;
-    color: green;
 }
-.old-price {
-    text-decoration: line-through;
-    color: #888;
+
+/* Book Card Options (Actions) */
+.book-card-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.book-actions .btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.book-actions .btn:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column; /* Stack sidebar and book grid vertically */
+    }
+
+    .categories-sidebar {
+        width: 100%; /* Sidebar takes full width on small screens */
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .book-card-opt {
+        width: 100%; /* Book cards take full width on smaller screens */
+    }
 }
